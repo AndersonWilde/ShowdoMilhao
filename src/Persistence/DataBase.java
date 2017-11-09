@@ -17,6 +17,7 @@ public class DataBase {
 		db = Db4o.openFile("c:/showdomilhao.yap");
 	}
 	
+	// getting a question from db
 	public Question getQuestion(){
 		Question question = new Question();
 		try {
