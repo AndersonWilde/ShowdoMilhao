@@ -16,13 +16,15 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
+import java.awt.SystemColor;
 
 public class Game {
 
 	private JFrame frame;
 
+	JTextArea questionLabel;
 	JLabel questionValueLabel;
-	JLabel questionLabel;
 	JButton altenativeALabel;
 	JButton altenativeBLabel;
 	JButton altenativeCLabel;
@@ -73,16 +75,16 @@ public class Game {
 	
 	private void showLooseMessage(){
 		int dialogResult = JOptionPane.showConfirmDialog(frame, "Você ganhou " + this.questionValue[this.questionNumber-1], "Resposta Errada!", JOptionPane.OK_CANCEL_OPTION);
-		if(dialogResult == JOptionPane.OK_OPTION){
+		if(dialogResult == JOptionPane.OK_OPTION || dialogResult == JOptionPane.CANCEL_OPTION){
 			goBackMainWindow();
 			
 		}
 		
 	}
-	
+
 	private void showWinMessage(){
 		int dialogResult = JOptionPane.showConfirmDialog(frame, "Você ganhou " + this.questionValue[this.questionNumber-1], "Você foi o vencedor!", JOptionPane.OK_CANCEL_OPTION);
-		if(dialogResult == JOptionPane.OK_OPTION){
+		if(dialogResult == JOptionPane.OK_OPTION || dialogResult == JOptionPane.CANCEL_OPTION){
 			goBackMainWindow();
 		}
 	}
@@ -140,11 +142,6 @@ public class Game {
 		questionValueLabel = new JLabel("R$ 1000000");
 		questionValueLabel.setBounds(327, 48, 67, 14);
 		frame.getContentPane().add(questionValueLabel);
-		
-		questionLabel = new JLabel("PERGUNTA");
-		questionLabel.setVerticalAlignment(SwingConstants.TOP);
-		questionLabel.setBounds(46, 100, 348, 46);
-		frame.getContentPane().add(questionLabel);
 		
 		altenativeALabel = new JButton("RESPOSTA A");
 		altenativeALabel.addActionListener(new ActionListener() {
@@ -204,6 +201,15 @@ public class Game {
 		});
 		btnDesistir.setBounds(327, 348, 89, 23);
 		frame.getContentPane().add(btnDesistir);
+		
+		questionLabel = new JTextArea();
+		questionLabel.setRows(3);
+		questionLabel.setWrapStyleWord(true);
+		questionLabel.setText("ihjaeoifhawsuifh saeuifhasui efh asuiefh iasuefhasuiefh uiasefh uiasefh asuiefh asuiefh uiasefh uiasefhuiaseh fuisefhuiasefha");
+		questionLabel.setBackground(SystemColor.menu);
+		questionLabel.setEditable(false);
+		questionLabel.setBounds(46, 94, 348, 54);
+		questionLabel.setLineWrap(true);
+		frame.getContentPane().add(questionLabel);
 	}
-
 }
